@@ -80,5 +80,5 @@ const calculatePayroll = (empA) =>{
     let allWages = empA.map(emp=>{
         allWagesFor(emp)
     });
-    return allWages.reduce(payRollReducer)
+    return allWages.reduce(reducer)
 };
