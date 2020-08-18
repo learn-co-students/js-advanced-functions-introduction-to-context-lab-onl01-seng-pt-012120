@@ -43,39 +43,13 @@ const createTimeOutEvent = (emp, tStamp) => {
 const hoursWorkedOnDate = (emp,date) => {
     let hourStart = emp.timeInEvents.find(event=> {
         if(event.date === date){
-            return event;
+            return event.hour;
         };
     });
     let hourFinish = emp.timeOutEvents.find(event=>{
         if(event.date === date){
-            return event;
+            return event.hour;
         }
     });
-    debugger;
-    return (hourFinish.hour/100-hourStart.hour/100);
-};
-
-const wagesEarnedOnDate = (emp,date) => {
-    return emp.payPerHour * hoursWorkedOnDate(emp,date);
-};
-
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-const allWagesFor = (emp) => {
-    let daysWorked = emp.timeInEvents.map(event=> {
-        return event.date
-    });
-    let wageArr = daysWorked.map(date => wagesEarnedOnDate(emp, date)).reduce(reducer);
-    return wageArr;
-};
-
-const findEmployeeByFirstName = (srcArray,firstName) => {
-    return srcArray.find(emp=> emp.firstName === firstName);
-};
-
-const calculatePayroll = (empA) =>{
-    let allWages = empA.map(emp=>{
-        allWagesFor(emp)
-    });
-    return allWages.reduce(reducer)
+    return (hourFinish-hourStart/100);
 };

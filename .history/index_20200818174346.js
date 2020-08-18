@@ -73,9 +73,4 @@ const findEmployeeByFirstName = (srcArray,firstName) => {
     return srcArray.find(emp=> emp.firstName === firstName);
 };
 
-const calculatePayroll = (empA) =>{
-    let allWages = empA.map(emp=>{
-        allWagesFor(emp)
-    });
-    return allWages.reduce(reducer)
-};
+const calculatePayroll = () =>{};
