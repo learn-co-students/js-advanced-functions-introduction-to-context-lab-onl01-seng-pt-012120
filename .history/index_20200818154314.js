@@ -54,31 +54,3 @@ const hoursWorkedOnDate = (emp,date) => {
     debugger;
     return (hourFinish.hour/100-hourStart.hour/100);
 };
-
-const wagesEarnedOnDate = (emp,date) => {
-    return emp.payPerHour * hoursWorkedOnDate(emp,date);
-};
-
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
-const allWagesFor = (emp) => {
-    let daysWorked = emp.timeInEvents.map(event=> {
-        return event.date
-    });
-    let wageArr = daysWorked.map(date => wagesEarnedOnDate(emp, date)).reduce(reducer);
-    return wageArr;
-};
-
-const findEmployeeByFirstName = (srcArray,firstName) => {
-    return srcArray.find(emp=> emp.firstName === firstName);
-};
-
-
-const payRollReducer = (accumulator, currentValue) => accumulator + currentValue;
-
-const calculatePayroll = (empA) =>{
-    let allWages = empA.map(emp=>{
-        return allWagesFor(emp)
-    });
-    return allWages.reduce(payRollReducer)
-};
